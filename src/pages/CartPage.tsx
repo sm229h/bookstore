@@ -51,7 +51,7 @@ export default function CartPage() {
                   {/* Cover */}
                   <Link to={`/books/${item.bookId}`} className="shrink-0">
                     <div className="w-20 sm:w-24">
-                      <BookCover title={item.title} authorName={item.authorName} cover={item.cover} />
+                      <BookCover title={item.title} authorName={item.authorName} cover={item.cover} coverImage={item.coverImage} />
                     </div>
                   </Link>
 

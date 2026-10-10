@@ -15,6 +15,7 @@ export interface Book {
   edition: string
   publishYear: number
   cover: BookCover
+  coverImage?: string
   description: string
   isFeatured: boolean
   isBestseller: boolean
@@ -61,6 +62,7 @@ export interface CartItem {
   price: number
   discountPercent: number
   cover: BookCover
+  coverImage?: string
   quantity: number
   stock: number
 }

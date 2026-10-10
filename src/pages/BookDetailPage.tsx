@@ -63,7 +63,7 @@ export default function BookDetailPage() {
           {/* Cover */}
           <div className="mx-auto w-full max-w-sm lg:sticky lg:top-28 lg:self-start">
             <div className="overflow-hidden rounded-2xl shadow-2xl">
-              <BookCover title={book.title} authorName={book.authorName} cover={book.cover} className="w-full" />
+              <BookCover title={book.title} authorName={book.authorName} cover={book.cover} coverImage={book.coverImage} className="w-full" />
             </div>
           </div>
 

@@ -47,7 +47,7 @@ export default function BookCard({ book }: BookCardProps) {
         )}
 
         <div className="overflow-hidden rounded-lg transition-transform duration-500 ease-smooth group-hover:scale-[1.02]">
-          <BookCover title={book.title} authorName={book.authorName} cover={book.cover} />
+          <BookCover title={book.title} authorName={book.authorName} cover={book.cover} coverImage={book.coverImage} />
         </div>
       </div>
 

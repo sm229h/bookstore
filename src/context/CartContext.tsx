@@ -55,6 +55,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           price: book.price,
           discountPercent: book.discountPercent,
           cover: book.cover,
+          coverImage: book.coverImage,
           quantity: Math.min(quantity, book.stock),
           stock: book.stock,
         },

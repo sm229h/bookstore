@@ -1,22 +1,43 @@
+import { useState } from 'react'
 import type { BookCover as BookCoverType } from '../types'
 
 interface BookCoverProps {
   title: string
   authorName: string
   cover: BookCoverType
+  coverImage?: string
   className?: string
 }
 
 /**
- * A CSS-rendered book cover — no external image dependencies.
- * Renders an elegant cover with gradient background, serif title, and accent border.
+ * Renders a book cover — uses a real cover image when available,
+ * falls back to an elegant CSS-rendered cover on error or when no image exists.
  */
-export default function BookCover({ title, authorName, cover, className = '' }: BookCoverProps) {
+export default function BookCover({ title, authorName, cover, coverImage, className = '' }: BookCoverProps) {
+  const [imageError, setImageError] = useState(false)
+  const showImage = coverImage && !imageError
+
+  if (showImage) {
+    return (
+      <div className={`relative aspect-[2/3] overflow-hidden rounded-lg shadow-md ${className}`}>
+        <img
+          src={coverImage}
+          alt={`جلد کتاب ${title}`}
+          loading="lazy"
+          onError={() => setImageError(true)}
+          onLoad={(e) => {
+            if (e.currentTarget.naturalWidth <= 1) setImageError(true)
+          }}
+          className="h-full w-full object-cover"
+        />
+      </div>
+    )
+  }
+
   const textColor = cover.textLight ? '#F7F5F1' : '#242622'
   return (
     <div
       className={`relative flex aspect-[2/3] flex-col justify-between overflow-hidden rounded-lg p-3 shadow-md ${className}`}
-      style={{ background: undefined }}
     >
       {/* Gradient background */}
       <div className={`absolute inset-0 bg-gradient-to-br ${cover.gradient}`} />
